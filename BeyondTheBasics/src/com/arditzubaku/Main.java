@@ -3,6 +3,11 @@ package com.arditzubaku;
 import java.awt.*;
 import java.util.Arrays;
 
+import java.lang.Math.*;
+
+import static java.lang.Math.PI;
+import static java.lang.Math.max;
+
 public class Main {
 
         private static String brand = "Brand Global";
@@ -26,9 +31,9 @@ public class Main {
     }
 */
 
-    static{
+/*    static{
         System.out.println("Static initializer in main");
-    }
+    }*/
 
     public static void main(String[] args) {
  /*       System.out.println("Program was given ");
@@ -134,11 +139,15 @@ public class Main {
 //        System.out.println(Person.count);
 
         // Instance Block Initializer
-        Person testPerson = new Person();
+/*        Person testPerson = new Person();
         System.out.println();
         new Person();
         System.out.println(Person.count);
-        System.out.println(testPerson.getFirstName());
+        System.out.println(testPerson.getFirstName());*/
+
+        // Static imports
+/*        System.out.println(PI);
+        System.out.println(max(10,20));*/
 
         }
 
