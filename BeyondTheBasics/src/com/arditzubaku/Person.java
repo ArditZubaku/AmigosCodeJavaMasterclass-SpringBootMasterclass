@@ -1,6 +1,14 @@
 package com.arditzubaku;
 
 public class Person {
+
+    //    Instance Block Initializer
+    {
+        this.firstName = "FirstName";
+        System.out.println("Instance initializer");
+        count++;
+    }
+
     public static int count;
 
     // Static Initialization Block - used only with static fields, methods, etc.
@@ -45,12 +53,13 @@ public class Person {
 
     public Person() {
         System.out.println("Default constructor");
-        count++;
+//        count++;
     }
 
     public Person(String firstName, String lastName, Gender gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
+//        count++;
     }
 }

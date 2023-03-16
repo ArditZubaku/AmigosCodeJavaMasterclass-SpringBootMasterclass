@@ -133,6 +133,12 @@ public class Main {
 //        new Person();
 //        System.out.println(Person.count);
 
+        // Instance Block Initializer
+        Person testPerson = new Person();
+        System.out.println();
+        new Person();
+        System.out.println(Person.count);
+        System.out.println(testPerson.getFirstName());
 
         }
 
