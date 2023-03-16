@@ -1,17 +1,15 @@
 package com.arditzubaku;
 
-import java.awt.*;
+import com.arditzubaku.car.Car;
+import com.arditzubaku.car.CarService;
+
+import java.math.BigDecimal;
 import java.util.Arrays;
-
-import java.lang.Math.*;
-
-import static java.lang.Math.PI;
-import static java.lang.Math.max;
 
 public class Main {
 
-        private static String brand = "Brand Global";
-        public static String globalForEveryClass = "Global Value";
+    public static String globalForEveryClass = "Global Value";
+    private static String brand = "Brand Global";
 //    private static var brand = "Brand";
 //    public static final String NAME = "Name";
 //    public final static  String NAME2 = "Name";
@@ -154,8 +152,17 @@ public class Main {
         // Domain/Model contain no business logic, allow you to store data.
         // Service classes
         // DA0 - Data Access Object
+        carsExample();
 
-        }
+    }
+
+    private static void carsExample() {
+        Car car = new Car("1234", BigDecimal.TEN);
+
+        CarService carService = new CarService();
+        carService.registerNewCar(car);
+        System.out.println(Arrays.toString(carService.getCars()));
+    }
 
     public static void printBrand(/*String *//*var*//* brand*/) {
         System.out.println(brand);
