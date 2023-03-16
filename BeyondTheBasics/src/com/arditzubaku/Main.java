@@ -149,6 +149,10 @@ public class Main {
 /*        System.out.println(PI);
         System.out.println(max(10,20));*/
 
+        // Organizing the code
+        // Packages
+        // Domain/Model contain no business logic, allow you to store data.
+
         }
 
     public static void printBrand(/*String *//*var*//* brand*/) {

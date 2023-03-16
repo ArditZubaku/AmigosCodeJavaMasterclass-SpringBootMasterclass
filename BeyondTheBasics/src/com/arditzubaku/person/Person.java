@@ -1,4 +1,4 @@
-package com.arditzubaku;
+package com.arditzubaku.person;
 
 public class Person {
 
