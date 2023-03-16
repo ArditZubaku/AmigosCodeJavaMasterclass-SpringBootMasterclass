@@ -152,6 +152,8 @@ public class Main {
         // Organizing the code
         // Packages
         // Domain/Model contain no business logic, allow you to store data.
+        // Service classes
+        // DA0 - Data Access Object
 
         }
 
