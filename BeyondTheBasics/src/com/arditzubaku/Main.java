@@ -25,6 +25,11 @@ public class Main {
         XL
     }
 */
+
+    static{
+        System.out.println("Static initializer in main");
+    }
+
     public static void main(String[] args) {
  /*       System.out.println("Program was given ");
         if (args.length > 0) {
@@ -123,10 +128,16 @@ public class Main {
         System.out.println(Integer.parseInt(ageStr));
         System.out.println(Integer.min(1, 100));
         */
+
+        // Static Initialization Block
+//        new Person();
+//        System.out.println(Person.count);
+
+
         }
 
     public static void printBrand(/*String *//*var*//* brand*/) {
         System.out.println(brand);
-//        System.out.println(contry);
+//        System.out.println(country);
     }
 }
