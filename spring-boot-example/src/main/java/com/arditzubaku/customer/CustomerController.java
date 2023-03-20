@@ -1,5 +1,6 @@
 package com.arditzubaku.customer;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,9 +9,10 @@ import java.util.List;
 
 @RestController // handles HTTP reqs
 public class CustomerController {
+
     private final CustomerService customerService;
 
-    public CustomerController(CustomerService customerService) {
+    public CustomerController(@Qualifier("CustomerServiceBean") CustomerService customerService) {
         this.customerService = customerService;
     }
 

@@ -1,6 +1,5 @@
 package com.arditzubaku.customer;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -8,8 +7,8 @@ import java.util.List;
 import java.util.Optional;
 
 //@Component
-@Repository // alias for @Component - any class of DAO services should be annotated with this to become a bean
-public class CustomerDataAccessService implements ICustomerDAO {
+@Repository ("List")// alias for @Component - any class of DAO services should be annotated with this to become a bean
+public class CustomerListDataAccessService implements ICustomerDAO {
 
 
     // database

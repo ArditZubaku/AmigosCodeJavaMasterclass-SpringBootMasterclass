@@ -1,11 +1,30 @@
 package com.arditzubaku.customer;
 
+import jakarta.persistence.*;
+
 import java.util.Objects;
 
+@Entity
 public class Customer {
+    @Id
+    @SequenceGenerator( // allows us to have numbers 1-2M
+            name = "customer_id_sequence",
+            sequenceName = "customer_id_sequence"
+            // a sequence = autoincrement number
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "customer_id_sequence"
+    )
     private Integer id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String email;
+
+    @Column(nullable = false)
     private Integer age;
 
     public Customer() {
@@ -17,6 +36,12 @@ public class Customer {
         this.email = email;
         this.age = age;
 
+    }
+
+    public Customer(String name, String email, Integer age) {
+        this.name = name;
+        this.email = email;
+        this.age = age;
     }
 
     public Integer getId() {
