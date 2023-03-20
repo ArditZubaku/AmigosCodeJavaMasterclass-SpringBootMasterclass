@@ -1,4 +1,4 @@
-package com.arditzubaku.customer;
+package com.arditzubaku.customer.requests;
 
 public record CustomerRegistrationRequest(
         String name,

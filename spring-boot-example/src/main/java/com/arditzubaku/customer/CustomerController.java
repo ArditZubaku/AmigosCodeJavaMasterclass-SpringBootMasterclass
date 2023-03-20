@@ -1,6 +1,7 @@
 package com.arditzubaku.customer;
 
-import org.springframework.beans.factory.annotation.Qualifier;
+import com.arditzubaku.customer.requests.CustomerRegistrationRequest;
+import com.arditzubaku.customer.requests.CustomerUpdateRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,10 +38,17 @@ public class CustomerController {
         customerService.addCustomer(request);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("{customerId}")
     public void deleteCustomer(
-            @PathVariable("id") Integer identifier
+            @PathVariable("customerId") Integer customerId
     ){
-        customerService.deleteCustomerById(identifier);
+        customerService.deleteCustomerById(customerId);
+    }
+
+    @PutMapping("{id}")
+    public void updateCustomer(
+            @PathVariable("id") Integer customerId,
+            @RequestBody CustomerUpdateRequest request){
+        customerService.updateCustomer(customerId, request);
     }
 }

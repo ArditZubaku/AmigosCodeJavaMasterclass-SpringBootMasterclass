@@ -1,11 +1,13 @@
 package com.arditzubaku.customer;
 
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Repository("JPA") //named bean
+@Transactional
 public class CustomerJPADataAccessService implements ICustomerDAO {
 
     private final ICustomerRepository customerRepository;
@@ -42,5 +44,10 @@ public class CustomerJPADataAccessService implements ICustomerDAO {
     @Override
     public void deleteCustomerById(Integer identifier) {
         customerRepository.deleteCustomerById(identifier);
+    }
+
+    @Override
+    public void updateCustomer(Customer customer) {
+        customerRepository.save(customer);
     }
 }

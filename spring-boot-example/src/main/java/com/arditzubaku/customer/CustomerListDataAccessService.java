@@ -1,5 +1,6 @@
 package com.arditzubaku.customer;
 
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.Optional;
 
 //@Component
 @Repository("List")// alias for @Component - any class of DAO services should be annotated with this to become a bean
+@Transactional
 public class CustomerListDataAccessService implements ICustomerDAO {
 
 
@@ -59,5 +61,10 @@ public class CustomerListDataAccessService implements ICustomerDAO {
                 .filter(customer -> customer.getId().equals(identifier))
                 .findFirst()
                 .ifPresent(customers::remove);
+    }
+
+    @Override
+    public void updateCustomer(Customer customer) {
+        customers.add(customer);
     }
 }
