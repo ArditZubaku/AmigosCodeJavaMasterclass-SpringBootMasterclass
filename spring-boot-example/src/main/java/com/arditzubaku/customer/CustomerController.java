@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@RestController // handles HTTP reqs
 public class CustomerController {
     private final CustomerService customerService;
 
-    public CustomerController( CustomerService customerService) {
+    public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
 
