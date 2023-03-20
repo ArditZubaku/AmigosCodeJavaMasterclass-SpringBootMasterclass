@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 //@Component
-@Repository ("List")// alias for @Component - any class of DAO services should be annotated with this to become a bean
+@Repository("List")// alias for @Component - any class of DAO services should be annotated with this to become a bean
 public class CustomerListDataAccessService implements ICustomerDAO {
 
 
@@ -32,5 +32,32 @@ public class CustomerListDataAccessService implements ICustomerDAO {
         return customers.stream()
                 .filter(c -> c.getId().equals(id))
                 .findFirst();
+    }
+
+    @Override
+    public void insertCostumer(Customer customer) {
+        customers.add(customer);
+    }
+
+    @Override
+    public boolean existsPersonWithEmail(String email) {
+        return customers.stream().
+                anyMatch(customer -> customer.getEmail().equals(email)
+        );
+    }
+
+    @Override
+    public boolean existsPersonWithId(Integer identifier) {
+        return customers.stream().anyMatch(
+                customer -> customer.getId().equals(identifier)
+        );
+    }
+
+    @Override
+    public void deleteCustomerById(Integer identifier) {
+        customers.stream()
+                .filter(customer -> customer.getId().equals(identifier))
+                .findFirst()
+                .ifPresent(customers::remove);
     }
 }

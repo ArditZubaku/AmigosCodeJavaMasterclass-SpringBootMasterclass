@@ -19,7 +19,7 @@ public class Main {
         CustomerController customerController = new CustomerController(customerService);*/
 
         ConfigurableApplicationContext applicationContext = SpringApplication.run(Main.class, args);
-        printBeans(applicationContext);
+//        printBeans(applicationContext);
 
 /*      FooService fooService = new FooService(new Foo("bar"));
         System.out.println(fooService.getFooName());*/
