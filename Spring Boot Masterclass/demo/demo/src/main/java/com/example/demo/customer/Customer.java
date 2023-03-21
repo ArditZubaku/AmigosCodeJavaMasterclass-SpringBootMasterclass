@@ -22,8 +22,8 @@ public class Customer { //Client layer
     private final String password;
 
     @NotBlank(message = "Email must not be empty")
-//    @Email // works without regexp
-    @Email(regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@+[^-][A-Za-z0-9-]+(\\\\.[A-Za-z0-9-]+)*(\\\\.[A-Za-z]{2,})$") // email validation
+    @Email // works without regexp
+//    @Email(regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@+[^-][A-Za-z0-9-]+(\\\\.[A-Za-z0-9-]+)*(\\\\.[A-Za-z]{2,})$") // email validation
     private final String email;
 
     public Customer(Long id, String name, String password, String email) {
