@@ -1,29 +1,35 @@
 package com.example.demo.customer;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/customer")
-@Deprecated
-public class CustomerController { //API Layer
+@RequestMapping(path = "api/v2/customers")
+public class CustomerControllerV2 { //API Layer
 
     private final CustomerService customerService; // immutability achieved
 
     @Autowired // optional
-    public CustomerController(CustomerService customerService) {
+    public CustomerControllerV2(CustomerService customerService) {
         this.customerService = customerService;
     }
 
-    @GetMapping("all")
+    /*@GetMapping(value = "all")*/
+    @GetMapping
     List<Customer> getCustomers() {
         return customerService.getCustomers();
     }
 
+    @GetMapping(path = "{customerId}")
+    Customer getCustomer(@PathVariable("customerId") Long customerId) {
+        return customerService.getCustomer(customerId);
+    }
+
     @PostMapping
-    void createNewCustomer(@RequestBody Customer customer) { // maps the JSON payload into Customer
+    void createNewCustomer(@Valid @RequestBody Customer customer) { // maps the JSON payload into Customer
         System.out.println("POST REQUEST...");
         System.out.println(customer);
     }
