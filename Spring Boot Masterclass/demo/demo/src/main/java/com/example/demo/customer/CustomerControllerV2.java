@@ -2,6 +2,7 @@ package com.example.demo.customer;
 
 import com.example.demo.exceptions.APIRequestException;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,14 +10,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v2/customers")
+@AllArgsConstructor
 public class CustomerControllerV2 { //API Layer
 
     private final CustomerService customerService; // immutability achieved
 
+/*
     @Autowired // optional
     public CustomerControllerV2(CustomerService customerService) {
         this.customerService = customerService;
     }
+*/
 
     /*@GetMapping(value = "all")*/
     @GetMapping

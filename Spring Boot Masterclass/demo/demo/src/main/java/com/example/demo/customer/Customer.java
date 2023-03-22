@@ -7,9 +7,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
 public class Customer { //Client layer
     //Cycle:
     //1.Client
@@ -33,15 +41,15 @@ public class Customer { //Client layer
 //    @Email(regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@+[^-][A-Za-z0-9-]+(\\\\.[A-Za-z0-9-]+)*(\\\\.[A-Za-z]{2,})$") // email validation
     private String email;
 
-    public Customer() {
-    }
+ /*   public Customer() {
+    }*/
 
-    public Customer(Long id, String name, String password, String email) {
+   /* public Customer(Long id, String name, String password, String email) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.email = email;
-    }
+    }*/
 
     @JsonProperty("customerId")
     public Long getId() {
@@ -61,7 +69,7 @@ public class Customer { //Client layer
         return email;
     }
 
-    @Override
+  /*  @Override
     public String toString() {
         return "Customer{" +
                 "id=" + id +
@@ -69,5 +77,5 @@ public class Customer { //Client layer
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 '}';
-    }
+    }*/
 }

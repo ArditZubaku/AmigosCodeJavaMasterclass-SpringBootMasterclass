@@ -1,16 +1,18 @@
 package com.example.demo.exceptions;
 
+import lombok.Data;
 import org.springframework.http.HttpStatus;
 
 import java.time.ZonedDateTime;
 
+@Data // equivalent to @Getter, @Setter, @RequiredArgsConstructor, @ToString, @EqualsAndHashCode
 public class APIException {
     private final String message;
     private final Throwable throwable;
     private final HttpStatus httpStatus;
     private final ZonedDateTime zonedDateTime;
 
-    public APIException(String message,
+/*    public APIException(String message,
                         Throwable throwable,
                         HttpStatus httpStatus,
                         ZonedDateTime zonedDateTime) {
@@ -18,9 +20,9 @@ public class APIException {
         this.throwable = throwable;
         this.httpStatus = httpStatus;
         this.zonedDateTime = zonedDateTime;
-    }
+    }*/
 
-    public String getMessage() {
+/*    public String getMessage() {
         return message;
     }
 
@@ -34,9 +36,9 @@ public class APIException {
 
     public ZonedDateTime getZonedDateTime() {
         return zonedDateTime;
-    }
+    }*/
 
-    @Override
+/*    @Override
     public String toString() {
         return "APIException{" +
                 "message='" + message + '\'' +
@@ -44,5 +46,5 @@ public class APIException {
                 ", httpStatus=" + httpStatus +
                 ", zonedDateTime=" + zonedDateTime +
                 '}';
-    }
+    }*/
 }

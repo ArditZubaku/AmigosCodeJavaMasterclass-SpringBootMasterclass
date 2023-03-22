@@ -1,6 +1,8 @@
 package com.example.demo.customer;
 
 import com.example.demo.exceptions.NotFoundException;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,22 +12,25 @@ import java.util.List;
 
 @Service
 //@Component
+@AllArgsConstructor
+@Slf4j // logger
 public class CustomerService { // Service layer - Business logic
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(CustomerService.class);
+  /*  private final static Logger LOGGER = LoggerFactory.getLogger(CustomerService.class);*/
 
     /*@Qualifier has higher priority than @Primary annotation.*/
 
     //    private final ICustomerRepo customerRepo;
     private final ICustomerRepository customerRepository;
 
-    @Autowired
-    public CustomerService(/*@Qualifier("FakeRepo")*/ ICustomerRepository customerRepository) {
+/*    @Autowired
+    public CustomerService(*//*@Qualifier("FakeRepo")*//* ICustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
-    }
+    }*/
 
     List<Customer> getCustomers() {
-        LOGGER.info("getCustomers was called");
+     /*   LOGGER.info("getCustomers was called");*/
+        log.info("getCustomers was called");
         return customerRepository.findAll();
     }
 
@@ -40,7 +45,7 @@ public class CustomerService { // Service layer - Business logic
                         () -> {
                             NotFoundException notFoundException = new NotFoundException
                                     ("Customer with id [%s] not found".formatted(customerId));
-                            LOGGER.error("ERROR in getting customer {}",customerId, notFoundException);
+                            log.error("ERROR in getting customer {}",customerId, notFoundException);
                             return notFoundException;
                         });
     }
