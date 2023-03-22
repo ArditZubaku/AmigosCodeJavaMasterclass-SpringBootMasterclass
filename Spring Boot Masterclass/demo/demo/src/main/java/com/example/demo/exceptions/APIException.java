@@ -5,12 +5,15 @@ import org.springframework.http.HttpStatus;
 
 import java.time.ZonedDateTime;
 
-@Data // equivalent to @Getter, @Setter, @RequiredArgsConstructor, @ToString, @EqualsAndHashCode
-public class APIException {
-    private final String message;
+//@Data // equivalent to @Getter, @Setter, @RequiredArgsConstructor, @ToString, @EqualsAndHashCode
+public record APIException(String message, Throwable throwable, HttpStatus httpStatus, ZonedDateTime zonedDateTime) {
+    // private final, getter, public constructor, equals, hashcode, toString
+    // the purpose of records is to achieve immutability
+
+   /* private final String message;
     private final Throwable throwable;
     private final HttpStatus httpStatus;
-    private final ZonedDateTime zonedDateTime;
+    private final ZonedDateTime zonedDateTime;*/
 
 /*    public APIException(String message,
                         Throwable throwable,
