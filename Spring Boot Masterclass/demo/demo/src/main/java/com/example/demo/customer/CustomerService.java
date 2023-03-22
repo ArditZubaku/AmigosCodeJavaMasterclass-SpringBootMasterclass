@@ -1,6 +1,8 @@
 package com.example.demo.customer;
 
 import com.example.demo.exceptions.NotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +11,8 @@ import java.util.List;
 @Service
 //@Component
 public class CustomerService { // Service layer - Business logic
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(CustomerService.class);
 
     /*@Qualifier has higher priority than @Primary annotation.*/
 
@@ -21,6 +25,7 @@ public class CustomerService { // Service layer - Business logic
     }
 
     List<Customer> getCustomers() {
+        LOGGER.info("getCustomers was called");
         return customerRepository.findAll();
     }
 
@@ -32,7 +37,11 @@ public class CustomerService { // Service layer - Business logic
         return customerRepository
                 .findById(customerId)
                 .orElseThrow(
-                        () -> new NotFoundException
-                                ("Customer with id [%s] not found".formatted(customerId)));
+                        () -> {
+                            NotFoundException notFoundException = new NotFoundException
+                                    ("Customer with id [%s] not found".formatted(customerId));
+                            LOGGER.error("ERROR in getting customer {}",customerId, notFoundException);
+                            return notFoundException;
+                        });
     }
 }
