@@ -3,7 +3,6 @@ package com.example.demo.customer;
 import com.example.demo.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -13,24 +12,27 @@ public class CustomerService { // Service layer - Business logic
 
     /*@Qualifier has higher priority than @Primary annotation.*/
 
-    private final ICustomerRepo customerRepo;
+    //    private final ICustomerRepo customerRepo;
+    private final ICustomerRepository customerRepository;
 
     @Autowired
-    public CustomerService(/*@Qualifier("FakeRepo")*/ ICustomerRepo customerRepo) {
-        this.customerRepo = customerRepo;
+    public CustomerService(/*@Qualifier("FakeRepo")*/ ICustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
     }
 
     List<Customer> getCustomers() {
-        return customerRepo.getCustomers();
+        return customerRepository.findAll();
     }
 
     Customer getCustomer(Long customerId) {
-        return getCustomers()
+        /*getCustomers()
                 .stream()
                 .filter(customer -> customer.getId().equals(customerId))
-                .findFirst()
+                .findFirst()*/
+        return customerRepository
+                .findById(customerId)
                 .orElseThrow(
-                        ()->new NotFoundException
+                        () -> new NotFoundException
                                 ("Customer with id [%s] not found".formatted(customerId)));
     }
 }

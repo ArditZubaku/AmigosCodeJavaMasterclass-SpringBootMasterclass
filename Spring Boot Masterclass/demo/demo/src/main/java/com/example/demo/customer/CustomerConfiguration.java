@@ -22,6 +22,6 @@ public class CustomerConfiguration {
     public ICustomerRepo customerRepo() {
         System.out.println("useFakeCustomerRepo = " + useFakeCustomerRepo);
         // instantiation
-        return useFakeCustomerRepo ? new CustomerFakeRepository() : new CustomerRepository();
+        return new CustomerFakeRepository();
     }
 }
