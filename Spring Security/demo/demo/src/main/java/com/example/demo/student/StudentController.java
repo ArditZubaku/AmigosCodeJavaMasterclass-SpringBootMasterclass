@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("api/v1/students")
 public class StudentController {
 
-    private static final List<Student> STUDENT_LIST = Arrays.asList(
+    private static final List<Student> STUDENTS = Arrays.asList(
             new Student(1, "Student1"),
             new Student(2, "Student2"),
             new Student(3, "Student3")
@@ -22,7 +22,7 @@ public class StudentController {
     @GetMapping(path = "{studentId}")
     public Student getStudent(@PathVariable("studentId") Integer studentId) {
 
-        return STUDENT_LIST.stream()
+        return STUDENTS.stream()
                 .filter(student -> studentId.equals(student.studentId()))
                 .findFirst()
                  .orElseThrow(() -> new IllegalStateException("Student " + studentId + " does not exist!"));
